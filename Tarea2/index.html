@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Primera Tarea de JS</h1>
+        <p>Un boton te saludará, el otro te dará una frase aleatoria</p>
+        <button type="button" onclick="boton1()">Saludar</button>
+        <button type="button" onclick="boton2()">Frase aleatoria</button>
+        
+        <script>
+            function boton1(){
+                alert("hola");
+                console.log("Prueba de boton 1");
+            }
+            function boton2(){
+                let strings =["Esta asignatura es muy divertida","Espero aprender mucho de bootstrap","El html es mi pasion","Este alumno se merece un 10"];
+                let random= Math.floor(Math.random()*strings.length);
+                let frase =strings[random];
+                alert(frase);
+                console.log("Boton2 "+frase);
+            }
+        </script>
+    </header>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables y conversiones</title>
+</head>
+<body>
+    <script>
+        //Creación de las variables
+        var num= 5; //numero
+        var cadena="6"; //string
+        var booleano=true; //boolean
+        var nulo =null;  //null
+        var noDefinido=undefined; //undefined
+
+        //Mostramos por consola los tipos de las variables
+        console.log(" _______________________");
+        console.log("| num= "+typeof(num)+"           |");
+        console.log("| cadena= "+typeof(cadena)+"        |");
+        console.log("| booleano= "+typeof(booleano)+"     |");
+        console.log("| nulo= "+typeof(null)+"          |");
+        console.log("| noDefinido= "+typeof(noDefinido)+" |");
+        console.log("|-----------------------|");
+
+        //Convertimos los datos de las variables
+        var num2= String(123); //numero convertido a cadena
+        var cadena2=Number("123"); //string convertido a numero
+        var booleano2=Boolean(0);//numero convertido a booleano
+        var booleano3=Boolean("texto");//texto convertido a booleano
+        var booleano4=String(true); //Booleano convertido a texto
+
+        //Mostramos por consola los tipos de las nuevas variables
+        console.log("| num2= "+typeof(num2)+"          |");
+        console.log("| cadena2= "+typeof(cadena2)+"       |");
+        console.log("| booleano2= "+typeof(booleano2)+"    |");
+        console.log("| booleano3= "+typeof(booleano3)+"    |");
+        console.log("| booleano4= "+typeof(booleano4)+"     |");
+        console.log("|_______________________|");
+        
+
+
+    </script>
+</body>
+</html> 
