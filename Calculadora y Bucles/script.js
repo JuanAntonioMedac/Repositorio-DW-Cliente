@@ -43,6 +43,12 @@ function modulo() {
     resultado.innerHTML = `El resto de la división es: ${getNumber1() % getNumber2()}`;
 }
 
+// Función para elevar un número a la raiz del otro
+function raiz() {
+    // Muestra en pantalla la raiz del primer número en base del segundo
+    resultado.innerHTML = `El resultado de la raiz ${getNumber2()}ª de ${getNumber1()} es: ${getNumber1() ** 1/getNumber2()}`;
+}
+
 // ----------- BUCLES FOR -----------
 function forT(numero) {
     // Recorre desde 0 hasta el número dado y muestra los valores en texto
