@@ -14,6 +14,15 @@
 // 1. Seleccionamos los elementos que vamos a usar
 const contenido = document.getElementById('contenido');
 const btnEj1 = document.getElementById('btn-ej1');
+const btnAdd = document.getElementById('btn-add');
+const btnRemove = document.getElementById('btn-remove');
+const nuevoTexto = document.getElementById('nuevoTexto');
+const msgEj4 = document.getElementById('msg-ej4');
+const tareaInput = document.getElementById('tareaInput');
+const listaTareas = document.getElementById('listaTareas');
+const btnCambiar = document.getElementById('btn-cambiar');
+const btnTarea = document.getElementById('btn-tarea');
+const btnBorrarCompletadas = document.getElementById('btn-borrar-completadas');
 
 // 2. Añadimos el evento click al botón
 btnEj1.addEventListener('click', function () {
@@ -51,6 +60,20 @@ btnEj1.addEventListener('click', function () {
 //         - Buscar todos los párrafos en #contenido
 //         - Si hay párrafos, eliminar el último
 
+btnAdd.addEventListener('click', function() {
+   const nuevoParrafo= document.createElement('p');
+   nuevoParrafo.textContent = 'Nuevo párrafo añadido';
+   nuevoParrafo.classList.add('mb-2');
+   contenido.appendChild(nuevoParrafo);
+});
+btnRemove.addEventListener('click', function(){
+   
+   if (contenido.lastElementChild) {
+      contenido.removeChild(contenido.lastElementChild);
+   }else{
+      alert("No queda nada que borrar")
+   }
+});
 
 /* ==========================================
    TODO: Ejercicio 3 – Eventos de ratón (hover)
@@ -59,13 +82,36 @@ btnEj1.addEventListener('click', function () {
 // TODO: 1. Crear función para cuando entra el ratón
 //         - Cambiar backgroundColor a '#e7f5ff'
 
+
 // TODO: 2. Crear función para cuando sale el ratón
 //         - Restaurar backgroundColor a ''
+
 
 // TODO: 3. Crear función para aplicar eventos hover a un párrafo
 //         - Usar addEventListener para 'mouseover' y 'mouseout'
 
+
 // TODO: 4. Aplicar hover a todos los párrafos existentes inicialmente
+function entrar(event){
+      event.target.style.background= '#e7f5ff';
+};
+function salir(event){
+      event.target.style.background= '';
+};
+
+function  aplicarHover(parrafo){
+   parrafo.addEventListener('mouseover',entrar);
+   parrafo.addEventListener('mouseout',salir);
+  
+
+};
+
+const parrafos= contenido.querySelectorAll('p');
+
+parrafos.forEach(parrafo => {
+   aplicarHover(parrafo);
+  
+});
 
 
 /* ======================================================
