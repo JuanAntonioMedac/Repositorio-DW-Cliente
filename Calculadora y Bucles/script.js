@@ -73,7 +73,7 @@ function forTexto() {
 function forB(numero) {
     // Muestra los números dentro de badges visuales
     for (let index = 0; index <= numero; index++) {
-        resultado.innerHTML += ` <span class="badge text-bg-secondary">${index}</span>`;
+        resultado.innerHTML += ` <span class="badge text-bg-secondary">#${index}</span>`;
     }
 }
 
@@ -111,7 +111,7 @@ function whileB(numero) {
     let contador = 0;
     // Muestra los números en badges con WHILE
     while (contador <= numero) {
-        resultado.innerHTML += ` <span class="badge text-bg-secondary">${contador}</span>`;
+        resultado.innerHTML += ` <span class="badge text-bg-secondary">#${contador}</span>`;
         contador++;
     }
 }
@@ -150,7 +150,7 @@ function doB(numero) {
     let contador = 0;
     // Muestra badges usando do...while
     do {
-        resultado.innerHTML += ` <span class="badge text-bg-secondary">${contador}</span>`;
+        resultado.innerHTML += ` <span class="badge text-bg-secondary">#${contador}</span>`;
         contador++;
     } while (contador <= numero);
 }
