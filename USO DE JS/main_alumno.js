@@ -16,9 +16,7 @@ const contenido = document.getElementById('contenido');
 const btnEj1 = document.getElementById('btn-ej1');
 const btnAdd = document.getElementById('btn-add');
 const btnRemove = document.getElementById('btn-remove');
-const nuevoTexto = document.getElementById('nuevoTexto');
 const msgEj4 = document.getElementById('msg-ej4');
-const tareaInput = document.getElementById('tareaInput');
 const listaTareas = document.getElementById('listaTareas');
 const btnCambiar = document.getElementById('btn-cambiar');
 const btnTarea = document.getElementById('btn-tarea');
@@ -126,6 +124,23 @@ parrafos.forEach(parrafo => {
 //         - Si tiene texto: ocultar error, cambiar texto del primer párrafo
 
 
+
+btnCambiar.addEventListener('click', function(event) {
+   // Evitar comportamiento por defecto (por si el botón está dentro de un form)
+   event.preventDefault();
+   var nuevoTexto = document.getElementById('nuevoTexto');
+
+   if(nuevoTexto.value.trim() === ''){
+      msgEj4.classList.replace ('d-none','d-block');
+   }else{
+      msgEj4.classList.replace ('d-block','d-none');
+      if (contenido.querySelector('p')){
+         contenido.querySelector('p').textContent= nuevoTexto.value.trim(); 
+         nuevoTexto.value = '';
+      }
+   }
+});
+
 /* ===================================================
    TODO: Ejercicio 5 – Lista de tareas (To-Do List)
    =================================================== */
@@ -140,7 +155,29 @@ parrafos.forEach(parrafo => {
 // TODO: 3. Función para borrar tareas completadas
 //         - Buscar todos los <li> con clase 'completada'
 //         - Eliminar cada uno de la lista
+btnTarea.addEventListener('click', function(event){
+  event.preventDefault();
+   const tareaInput = document.getElementById('tareaInput').value;
+   if (tareaInput) {
+      const li = document.createElement('li');
+      li.textContent = tareaInput.trim();
+      li.addEventListener('click', function(){
+         li.classList.toggle('completada');
+      });
+      listaTareas.appendChild(li);
+      tareaInput= '';
+      tareaInput.focus();
+   }
+   
+   
+});
+btnBorrarCompletadas.addEventListener('click', function(){
+   const tareasCompletadas = listaTareas.querySelectorAll('li.completada');
+   tareasCompletadas.forEach(function(tarea){
+      listaTareas.removeChild(tarea);
+   });
 
+});
 
 /* ===================================================
    CONSEJOS PARA LOS ALUMNOS:
