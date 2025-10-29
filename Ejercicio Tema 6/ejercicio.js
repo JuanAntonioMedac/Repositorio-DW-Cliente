@@ -597,9 +597,7 @@ function agregarLibro() {
     var generoSeleccionado = genero.options[genero.selectedIndex].text;
     
 
-    console.log(titulo, autor, año, generoSeleccionado);
-    var mensaje = document.getElementById("resultado-ej10msj").innerHTML;
-    var errores = [];
+    var errores=[];
     // TODO: Validar que todos los campos estén compvaros
     if (titulo == "") {
         errores.push("Título");
@@ -640,14 +638,14 @@ function agregarLibro() {
         if (genero) genero.selectedIndex = 0;
 
         // Mostrar mensaje de confirmación y actualizar visualización
-        mensaje = "<div class='alert alert-success'>Libro añadido correctamente</div>";
+        document.getElementById("resultado-ej10msj").innerHTML = "<div class='alert alert-success'>Libro añadido correctamente</div>";
         mostrarBiblioteca();
     }
 }
 function filtrarPorGenero() {
     // TODO: Obtener género seleccionado
     // TODO: Filtrar libros por género
-    mensaje="";
+    document.getElementById("resultado-ej10msj").innerHTML="";
     var librosFiltrados = []; // TODO: Implementar filter
     var genero = document.getElementById("libro-genero");
     var generoSeleccionado = genero.options[genero.selectedIndex].text;
@@ -662,7 +660,7 @@ function filtrarPorGenero() {
 }
 
 function librosRecientes() {
-    mensaje="";
+    document.getElementById("resultado-ej10msj").innerHTML="";
     // TODO: Filtrar libros publicados después del 2020
     var recientes = []; // TODO: Implementar filter
     biblioteca.filter(function(a){
@@ -675,17 +673,19 @@ function librosRecientes() {
 }
 
 function ordenarPorTitulo() {
+    document.getElementById("resultado-ej10msj").innerHTML="";
     // TODO: Ordenar libros por título alfabéticamente
+    
     var librosOrdenados = []; // TODO: Implementar sort
-    librosOrdenados = biblioteca.sort(function(a,b){
+    librosOrdenados = [...biblioteca].sort(function(a,b){
         return a.titulo.toLowerCase().localeCompare(b.titulo.toLowerCase());
    });
-
+   
     mostrarLibros(librosOrdenados);
 }
 
 function mostrarBiblioteca() {
-    mensaje="";
+    
     // TODO: Mostrar todos los libros de la biblioteca
     mostrarLibros(biblioteca);
 }
