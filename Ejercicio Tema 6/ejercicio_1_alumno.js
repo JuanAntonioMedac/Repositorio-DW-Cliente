@@ -102,7 +102,7 @@ function mostrarColores() {
 
     var html = "<h5>Lista de Colores:</h5><ul>";
     // TODO: Compvarar el bucle para mostrar los colores
-    colores.forEach(color => {
+    colores.forEach(function (color)  {
         html+=`<li>${color}</li>`;
     });
     html += "</ul>";
@@ -161,7 +161,7 @@ function mostrarProductos(arrayProductos) {
 
     var html = `<div class="row">`;
     // TODO: Recorrer el array y crear HTML para cada producto
-    arrayProductos.forEach(producto => {
+    arrayProductos.forEach(function (producto)  {
         html += `<div class="card col-2  m-3">
                     <div>
                         <p class="text-center"><b>${producto.nombre}</b></p>
@@ -192,7 +192,7 @@ var estudianteNotas = {
             this.notas.push(nota);
             document.getElementById("resultado-ej4").innerHTML = `<div class="alert alert-info text-primary"><b>Nota</b> añadida</div>`;
             document.getElementById("resultado-ej4").innerHTML += "<p>Notas: ";
-            this.notas.forEach(element => {
+            this.notas.forEach(function (element) {
                 document.getElementById("resultado-ej4").innerHTML += `${element}, `
             });
             document.getElementById("resultado-ej4").innerHTML += "</p>";
@@ -209,7 +209,7 @@ var estudianteNotas = {
         // TODO: Calcular el promedio de todas las notas
         // TODO: Retornar el promedio redondeado a 2 decimales
         // Pista: usar reduce() o un bucle for
-        var promedioNotas = this.notas.reduce((acumulador,numero) => acumulador + numero, 0);
+        var promedioNotas = this.notas.reduce(function(acumulador,numero) {return acumulador + numero;}, 0);
         promedioNotas/=this.notas.length;
         if (estudianteNotas.notas[0]) {
             return  `<p> El promedio es: ${ promedioNotas.toFixed(2)}</p>`;
@@ -223,7 +223,7 @@ var estudianteNotas = {
         // TODO: Incluir el promedio si hay notas
         if (estudianteNotas.notas[0]) {
             var notasMostradas="<p>Notas: ";
-            this.notas.forEach(element => {
+            this.notas.forEach(function (element) {
                 notasMostradas+= `${element}, `
             });
                
@@ -339,7 +339,7 @@ function mostrarEmpleados(arrayEmpleados) {
 
     var html = "";
     // TODO: Crear HTML para cada empleado
-    arrayEmpleados.forEach(empleado => {
+    arrayEmpleados.forEach(function (empleado) {
         html += `<div class="card m-2">
                     <div class="card-body">
                         <h5 class="card-title">${empleado.nombre}</h5>
@@ -393,7 +393,7 @@ function buscarMadrid() {
     // TODO: Usar find() para buscar "Madrid"
     // TODO: Usar indexOf() para encontrar su posición
     // TODO: Mostrar los resultados
-    var html = "Madrid esta en la posición " + ciudades.indexOf(ciudades.find(ciudad => ciudad=="Madrid"));
+    var html = "Madrid esta en la posición " + ciudades.indexOf(ciudades.find(function(ciudad) {return ciudad=="Madrid"}));
     document.getElementById("resultado-ej6").innerHTML = html;
 }
 
@@ -466,7 +466,7 @@ function acelerarTodos() {
     // TODO: Llamar al método acelerar() de todos los vehículos
     // TODO: Actualizar la visualización
     
-    vehiculos.forEach(element => {
+    vehiculos.forEach(function (element) {
        element.acelerar();
     });
 
@@ -477,7 +477,7 @@ function mostrarInfoVehiculos() {
     // TODO: Mostrar información de todos los vehículos
     var html = "";
     // TODO: Recorrer array y mostrar info de cada vehículo
-    vehiculos.forEach(element => {
+    vehiculos.forEach(function (element) {
       html+=  element.mostrarInfo();
     });
 
@@ -524,9 +524,9 @@ function mostrarMatriz() {
     var html = "<h5>Matriz 3x3:</h5><table class='table table-bordered text-center'>";
 
     // TODO: Crear filas y celdas de la tabla
-    matriz.forEach(element => {
+    matriz.forEach(function (element) {
        html+= "<tr>";
-       element.forEach(numero =>  {
+       element.forEach(function (numero)  {
             html+= `<td> ${numero}</td>`;
        });
             
@@ -556,14 +556,14 @@ function duplicarConMap() {
     // TODO: Usar map() para duplicar todos los números
     var duplicados = []; // TODO: Implementar map
     
-    duplicados=numeros.map(numeros=>numeros*2);
+    duplicados=numeros.map(function(numeros){return numeros*2});
     mostrarArray("Números duplicados", duplicados);
 }
 
 function filtrarPares() {
     // TODO: Usar filter() para obtener solo números pares
     var pares = []; // TODO: Implementar filter
-    pares=numeros.filter(numeros=>numeros%2==0);
+    pares=numeros.filter(function(numeros){ return numeros%2==0});
 
     mostrarArray("Números pares", pares);
 }
@@ -571,7 +571,7 @@ function filtrarPares() {
 function sumarConReduce() {
     // TODO: Usar reduce() para sumar todos los números
     var suma = 0; // TODO: Implementar reduce
-    suma=numeros.reduce((acumulado,numero)=>acumulado+numero,0);
+    suma=numeros.reduce(function(acumulador,numero) {return acumulador + numero;}, 0);
 
     document.getElementById("resultado-ej9").innerHTML +=
         "<div class='alert alert-success'>Suma total: " + suma + "</div>";
@@ -638,14 +638,14 @@ function agregarLibro() {
         if (genero) genero.selectedIndex = 0;
 
         // Mostrar mensaje de confirmación y actualizar visualización
-        document.getElementById("resultado-ej10msj").innerHTML = "<div class='alert alert-success'>Libro añadido correctamente</div>";
-        mostrarBiblioteca();
+        var success = `<div class='alert alert-success'>Libro añadido correctamente</div>`;
+        mostrarLibros(biblioteca,success);
     }
 }
 function filtrarPorGenero() {
     // TODO: Obtener género seleccionado
     // TODO: Filtrar libros por género
-    document.getElementById("resultado-ej10msj").innerHTML="";
+    
     var librosFiltrados = []; // TODO: Implementar filter
     var genero = document.getElementById("libro-genero");
     var generoSeleccionado = genero.options[genero.selectedIndex].text;
@@ -660,7 +660,7 @@ function filtrarPorGenero() {
 }
 
 function librosRecientes() {
-    document.getElementById("resultado-ej10msj").innerHTML="";
+    
     // TODO: Filtrar libros publicados después del 2020
     var recientes = []; // TODO: Implementar filter
     biblioteca.filter(function(a){
@@ -673,7 +673,7 @@ function librosRecientes() {
 }
 
 function ordenarPorTitulo() {
-    document.getElementById("resultado-ej10msj").innerHTML="";
+    
     // TODO: Ordenar libros por título alfabéticamente
     
     var librosOrdenados = []; // TODO: Implementar sort
@@ -690,15 +690,15 @@ function mostrarBiblioteca() {
     mostrarLibros(biblioteca);
 }
 
-function mostrarLibros(arrayLibros) {
+function mostrarLibros(arrayLibros,alerta="") {
     // Mostrar libros en formato de tarjetas HTML
-    var html = "";
+    var html = `${alerta}`;
 
     if (arrayLibros.length === 0) {
         html = "<div class='alert alert-warning'>No hay libros para mostrar</div>";
     } else {
-        html = `<div class="container row">`;
-        arrayLibros.forEach(libro => {
+        html += `<div class="container row">`;
+        arrayLibros.forEach(function (libro)  {
             
             html += `<div class="card m-1 col-3">
                         <div class="card-body">
