@@ -35,7 +35,7 @@
     </style>
 </head>
 
-<body>
+<body >
     <div class="container my-5">
         <h1 class="display-4 text-primary mb-4">Tema 6 - Objetos y Arrays</h1>
         <p class="lead mb-5">Ejercicios prácticos para dominar objetos y arrays en JavaScript</p>
@@ -270,6 +270,52 @@
                     <button id="btn-libros-recientes" class="btn btn-info">Libros Recientes (>2020)</button>
                 </div>
                 <div id="resultado-ej10" class="resultado"></div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalEj10" tabindex="-1" aria-labelledby="modalEj10Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEj10Label">Editar Libro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label class="form-label">Título</label>
+                            <input type="text" class="form-control" id="modal-titulo">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Autor</label>
+                            <input type="text" class="form-control" id="modal-autor">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Año</label>
+                            <input type="number" class="form-control" id="modal-year">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Género</label>
+                            <select class="form-select" id="modal-genero">
+                                <option value="Ficción">Ficción</option>
+                                <option value="No ficción">No ficción</option>
+                                <option value="Ciencia">Ciencia</option>
+                                <option value="Historia">Historia</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="modal-guardar">Guardar</button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

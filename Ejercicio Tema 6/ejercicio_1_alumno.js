@@ -63,36 +63,36 @@ function ejercicio1() {
 var colores = ["rojo", "azul", "verde"];
 
 function agregarColor() {
-    var color=document.getElementById("color-input");
+    var color = document.getElementById("color-input");
     // TODO: Obtener el valor del input con id "color-input"
     // TODO: Agregar el color al array usando push()
-    if (color.value!="") {
+    if (color.value != "") {
         colores.push(color.value);
-        color.value="";
-        document.getElementById("resultado-ej2").innerHTML=`<div class="alert alert-info">Color añadido</div>`;
+        color.value = "";
+        document.getElementById("resultado-ej2").innerHTML = `<div class="alert alert-info">Color añadido</div>`;
     } else {
-        document.getElementById("resultado-ej2").innerHTML=`<div class="alert alert-danger text-danger">Texto requerido</div>`;
+        document.getElementById("resultado-ej2").innerHTML = `<div class="alert alert-danger text-danger">Texto requerido</div>`;
         color.focus();
     }
-    
+
     // TODO: Limpiar el input
     // TODO: Mostrar mensaje de confirmación
-    
-    
+
+
 }
 
 function eliminarUltimoColor() {
     // TODO: Eliminar el último elemento del array usando pop()
     // TODO: Mostrar mensaje indicando qué color se eliminó
     // TODO: Si el array está vacío, mostrar mensaje apropiado
-    var ultimo=colores.pop();
-   if (colores[0]) {
-        document.getElementById("resultado-ej2").innerHTML=`<div class="alert alert-warning text-danger">${ultimo} Eliminado</div>`;
-    }else{
-        document.getElementById("resultado-ej2").innerHTML=`<div class="alert alert-danger text-danger">No hay colores que borrar</div>`;
+    var ultimo = colores.pop();
+    if (colores[0]) {
+        document.getElementById("resultado-ej2").innerHTML = `<div class="alert alert-warning text-danger">${ultimo} Eliminado</div>`;
+    } else {
+        document.getElementById("resultado-ej2").innerHTML = `<div class="alert alert-danger text-danger">No hay colores que borrar</div>`;
 
     }
-    
+
 }
 
 function mostrarColores() {
@@ -102,11 +102,11 @@ function mostrarColores() {
 
     var html = "<h5>Lista de Colores:</h5><ul>";
     // TODO: Compvarar el bucle para mostrar los colores
-    colores.forEach(function (color)  {
-        html+=`<li>${color}</li>`;
+    colores.forEach(function (color) {
+        html += `<li>${color}</li>`;
     });
     html += "</ul>";
-    
+
     document.getElementById("resultado-ej2").innerHTML = html;
 }
 
@@ -126,7 +126,7 @@ function cargarProductos() {
         { nombre: "Silla Gamer", precio: 199, categoria: "Muebles" },
         { nombre: "Cámara Web", precio: 149, categoria: "Electrónicos" },
         { nombre: "Mouse Inalámbrico", precio: 49, categoria: "Accesorios" },
-        
+
     ];
 
     mostrarProductos(productos);
@@ -135,9 +135,9 @@ function cargarProductos() {
 function ordenarPorPrecio() {
     // TODO: Ordenar el array productos por precio de menor a mayor
     // Pista: usar el método sort() con función comparadora
-   productos= productos.sort(function(a,b){
+    productos = productos.sort(function (a, b) {
         return a.precio - b.precio;
-   });
+    });
 
     mostrarProductos(productos);
 }
@@ -146,12 +146,12 @@ function filtrarProductosCaros() {
     // TODO: Filtrar productos con precio mayor a 50€
     // Pista: usar el método filter()
     var productosCaros = [];
-    productos= productos.filter(function(a){
-        if(a.precio>50){
+    productos = productos.filter(function (a) {
+        if (a.precio > 50) {
             productosCaros.push(a);
         }
     });
-     // TODO: Implementar el filtro
+    // TODO: Implementar el filtro
     mostrarProductos(productosCaros);
 }
 
@@ -161,7 +161,7 @@ function mostrarProductos(arrayProductos) {
 
     var html = `<div class="row">`;
     // TODO: Recorrer el array y crear HTML para cada producto
-    arrayProductos.forEach(function (producto)  {
+    arrayProductos.forEach(function (producto) {
         html += `<div class="card col-2  m-3">
                     <div>
                         <p class="text-center"><b>${producto.nombre}</b></p>
@@ -184,11 +184,11 @@ var estudianteNotas = {
     notas: [],
 
     agregarNota: function (nota) {
-        
+
         // TODO: Validar que la nota esté entre 0 y 10
         // TODO: Agregar la nota al array de notas
         // TODO: Mostrar mensaje de confirmación
-        if (nota>=0 && nota<=10){
+        if (nota >= 0 && nota <= 10) {
             this.notas.push(nota);
             document.getElementById("resultado-ej4").innerHTML = `<div class="alert alert-info text-primary"><b>Nota</b> añadida</div>`;
             document.getElementById("resultado-ej4").innerHTML += "<p>Notas: ";
@@ -196,11 +196,11 @@ var estudianteNotas = {
                 document.getElementById("resultado-ej4").innerHTML += `${element}, `
             });
             document.getElementById("resultado-ej4").innerHTML += "</p>";
-        }else{
+        } else {
             document.getElementById("resultado-ej4").innerHTML = `<div class="alert alert-danger text-danger">No es una <b>Nota</b> válida</div>`;
         }
-        
-       
+
+
 
 
     },
@@ -209,33 +209,33 @@ var estudianteNotas = {
         // TODO: Calcular el promedio de todas las notas
         // TODO: Retornar el promedio redondeado a 2 decimales
         // Pista: usar reduce() o un bucle for
-        var promedioNotas = this.notas.reduce(function(acumulador,numero) {return acumulador + numero;}, 0);
-        promedioNotas/=this.notas.length;
+        var promedioNotas = this.notas.reduce(function (acumulador, numero) { return acumulador + numero; }, 0);
+        promedioNotas /= this.notas.length;
         if (estudianteNotas.notas[0]) {
-            return  `<p> El promedio es: ${ promedioNotas.toFixed(2)}</p>`;
-        }else{
+            return `<p> El promedio es: ${promedioNotas.toFixed(2)}</p>`;
+        } else {
             return `<div class="alert alert-warning text-warning">No hay <b>notas</b> para calcular el <b>promedio</b></div>`;
-        } 
+        }
     },
 
     mostrarNotas: function () {
         // TODO: Retornar HTML con todas las notas
         // TODO: Incluir el promedio si hay notas
         if (estudianteNotas.notas[0]) {
-            var notasMostradas="<p>Notas: ";
+            var notasMostradas = "<p>Notas: ";
             this.notas.forEach(function (element) {
-                notasMostradas+= `${element}, `
+                notasMostradas += `${element}, `
             });
-               
-            notasMostradas+=` </p>${estudianteNotas.calcularPromedio()}`;
+
+            notasMostradas += ` </p>${estudianteNotas.calcularPromedio()}`;
             return notasMostradas; // Cambiar esta línea
-        
-        }else{
-            return  `<div class="alert alert-warning text-warning">No hay <b>notas</b> para mostrar</div>`;
+
+        } else {
+            return `<div class="alert alert-warning text-warning">No hay <b>notas</b> para mostrar</div>`;
 
 
         }
-       
+
     }
 };
 
@@ -245,25 +245,25 @@ function agregarNota() {
     // TODO: Llamar al método agregarNota del objeto
     // TODO: Limpiar el input
     // TODO: Actualizar la visualización
-    var nuevaNota=document.getElementById("nota-input");
-    var nota= parseFloat(nuevaNota.value);
+    var nuevaNota = document.getElementById("nota-input");
+    var nota = parseFloat(nuevaNota.value);
     estudianteNotas.agregarNota(nota);
-    nuevaNota.value="";
+    nuevaNota.value = "";
     nuevaNota.focus();
 }
 
 function calcularPromedio() {
     // TODO: Llamar al método calcularPromedio
     // TODO: Mostrar el resultado en el DOM
-    var promedio=estudianteNotas.calcularPromedio();
-    document.getElementById("resultado-ej4").innerHTML =promedio;
+    var promedio = estudianteNotas.calcularPromedio();
+    document.getElementById("resultado-ej4").innerHTML = promedio;
 
 }
 
 function mostrarNotasEstudiante() {
     // TODO: Llamar al método mostrarNotas
     // TODO: Mostrar el resultado en el DOM
-    var html= estudianteNotas.mostrarNotas();
+    var html = estudianteNotas.mostrarNotas();
     document.getElementById("resultado-ej4").innerHTML = `<div class="">${html}</div>`
 }
 
@@ -293,20 +293,20 @@ function buscarPorDepartamento() {
     // TODO: Filtrar empleados por departamento
     // TODO: Mostrar los resultados
     if (empleados[0]) {
-        
+
         var departamento = document.getElementById("departamento-input").value; // TODO: Obtener del input
         var empleadosDepto = []; // TODO: Implementar filtro
-        empleados.filter(function(a){
-            if(a.departamento === departamento){
+        empleados.filter(function (a) {
+            if (a.departamento === departamento) {
                 empleadosDepto.push(a);
-            }else{
-                document.getElementById("resultado-ej5").innerHTML =   `<div class="alert alert-warning text-warning">No existe ese <b>departamento</b></div>`
+            } else {
+                document.getElementById("resultado-ej5").innerHTML = `<div class="alert alert-warning text-warning">No existe ese <b>departamento</b></div>`
             }
         });
-        }else{
-                document.getElementById("resultado-ej5").innerHTML =   `<div class="alert alert-danger text-danger">No se han  <b>cargado los empleados</b></div>`
+    } else {
+        document.getElementById("resultado-ej5").innerHTML = `<div class="alert alert-danger text-danger">No se han  <b>cargado los empleados</b></div>`
 
-        }
+    }
 
     mostrarEmpleados(empleadosDepto);
 }
@@ -315,22 +315,22 @@ function filtrarSalarioAlto() {
     // TODO: Filtrar empleados con salario > 3000€
     if (empleados[0]) {
         var empleadosAltoSalario = []; // TODO: Implementar filtro
-        empleados.filter(function(a){
-            if(a.salario >3000){
+        empleados.filter(function (a) {
+            if (a.salario > 3000) {
                 empleadosAltoSalario.push(a);
             }
         });
         mostrarEmpleados(empleadosAltoSalario);
         if (!empleadosAltoSalario[0]) {
-            document.getElementById("resultado-ej5").innerHTML =   `<div class="alert alert-warning text-warning">No existe nadie con ese <b>sueldazo</b></div>`
-        
+            document.getElementById("resultado-ej5").innerHTML = `<div class="alert alert-warning text-warning">No existe nadie con ese <b>sueldazo</b></div>`
+
         }
-    }else{
-            document.getElementById("resultado-ej5").innerHTML =   `<div class="alert alert-danger text-danger">No se han  <b>cargado los empleados</b></div>`
+    } else {
+        document.getElementById("resultado-ej5").innerHTML = `<div class="alert alert-danger text-danger">No se han  <b>cargado los empleados</b></div>`
 
     }
 
-    
+
 }
 
 function mostrarEmpleados(arrayEmpleados) {
@@ -372,9 +372,9 @@ function eliminarDelMedio() {
     // TODO: Usar splice para eliminar elementos del medio
     // TODO: Mostrar qué elementos se eliminaron
     // TODO: Mostrar el array resultante
-    var eliminadas= ciudades.splice(2,2);
+    var eliminadas = ciudades.splice(2, 2);
     var html = "<h5>Ciudades restantes:</h5>" + ciudades.join(", ");
-        html += "<br><h5>Ciudades eliminadas:</h5>" + eliminadas.join(", ");
+    html += "<br><h5>Ciudades eliminadas:</h5>" + eliminadas.join(", ");
     document.getElementById("resultado-ej6").innerHTML = html;
 
 }
@@ -383,9 +383,9 @@ function extraerConSlice() {
     // TODO: Usar slice para extraer una porción del array
     // TODO: Mostrar la porción extraída
     // TODO: Mostrar que el array original no se modifica
-    var extraidas= ciudades.slice(2,4);
+    var extraidas = ciudades.slice(2, 4);
     var html = "<h5>Ciudades restantes:</h5>" + ciudades.join(", ");
-        html += "<br><h5>Ciudades extraidas:</h5>" + extraidas.join(", ");
+    html += "<br><h5>Ciudades extraidas:</h5>" + extraidas.join(", ");
     document.getElementById("resultado-ej6").innerHTML = html;
 }
 
@@ -393,7 +393,7 @@ function buscarMadrid() {
     // TODO: Usar find() para buscar "Madrid"
     // TODO: Usar indexOf() para encontrar su posición
     // TODO: Mostrar los resultados
-    var html = "Madrid esta en la posición " + ciudades.indexOf(ciudades.find(function(ciudad) {return ciudad=="Madrid"}));
+    var html = "Madrid esta en la posición " + ciudades.indexOf(ciudades.find(function (ciudad) { return ciudad == "Madrid" }));
     document.getElementById("resultado-ej6").innerHTML = html;
 }
 
@@ -465,12 +465,12 @@ function crearVehiculos() {
 function acelerarTodos() {
     // TODO: Llamar al método acelerar() de todos los vehículos
     // TODO: Actualizar la visualización
-    
+
     vehiculos.forEach(function (element) {
-       element.acelerar();
+        element.acelerar();
     });
 
-   mostrarInfoVehiculos();
+    mostrarInfoVehiculos();
 }
 
 function mostrarInfoVehiculos() {
@@ -478,7 +478,7 @@ function mostrarInfoVehiculos() {
     var html = "";
     // TODO: Recorrer array y mostrar info de cada vehículo
     vehiculos.forEach(function (element) {
-      html+=  element.mostrarInfo();
+        html += element.mostrarInfo();
     });
 
     document.getElementById("resultado-ej7").innerHTML = html;
@@ -495,11 +495,11 @@ function crearMatriz() {
     // Pista: usar bucles anidados y Math.random()
     matriz = [];
     for (let index = 0; index < 3; index++) {
-       var random1 =Math.floor(Math.random() * 10) + 1;
-       var random2 =Math.floor(Math.random() * 10) + 1;
-       var random3 =Math.floor(Math.random() * 10) + 1;
-       matriz.push([random1,random2,random3])
-        
+        var random1 = Math.floor(Math.random() * 10) + 1;
+        var random2 = Math.floor(Math.random() * 10) + 1;
+        var random3 = Math.floor(Math.random() * 10) + 1;
+        matriz.push([random1, random2, random3])
+
     }
 
     mostrarMatriz();
@@ -508,11 +508,11 @@ function crearMatriz() {
 function sumarDiagonal() {
     // TODO: Calcular la suma de la diagonal principal
     // TODO: Mostrar el resultado
-    var diagonal=0;
-    
+    var diagonal = 0;
+
     for (let index = 0; index < matriz.length; index++) {
-        diagonal+=matriz[index][index];
-        
+        diagonal += matriz[index][index];
+
     }
 
 
@@ -525,12 +525,12 @@ function mostrarMatriz() {
 
     // TODO: Crear filas y celdas de la tabla
     matriz.forEach(function (element) {
-       html+= "<tr>";
-       element.forEach(function (numero)  {
-            html+= `<td> ${numero}</td>`;
-       });
-            
-       html+= "</tr>";
+        html += "<tr>";
+        element.forEach(function (numero) {
+            html += `<td> ${numero}</td>`;
+        });
+
+        html += "</tr>";
     });
 
 
@@ -547,7 +547,7 @@ var numeros = [];
 
 function crearArrayNumeros() {
     // TODO: Crear array con números del 1 al 10
-    numeros = [1,2,3,4,5,6,7,8,9,10]; // TODO: Comparar
+    numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // TODO: Comparar
 
     mostrarArray("Array original", numeros);
 }
@@ -555,15 +555,15 @@ function crearArrayNumeros() {
 function duplicarConMap() {
     // TODO: Usar map() para duplicar todos los números
     var duplicados = []; // TODO: Implementar map
-    
-    duplicados=numeros.map(function(numeros){return numeros*2});
+
+    duplicados = numeros.map(function (numeros) { return numeros * 2 });
     mostrarArray("Números duplicados", duplicados);
 }
 
 function filtrarPares() {
     // TODO: Usar filter() para obtener solo números pares
     var pares = []; // TODO: Implementar filter
-    pares=numeros.filter(function(numeros){ return numeros%2==0});
+    pares = numeros.filter(function (numeros) { return numeros % 2 == 0 });
 
     mostrarArray("Números pares", pares);
 }
@@ -571,7 +571,7 @@ function filtrarPares() {
 function sumarConReduce() {
     // TODO: Usar reduce() para sumar todos los números
     var suma = 0; // TODO: Implementar reduce
-    suma=numeros.reduce(function(acumulador,numero) {return acumulador + numero;}, 0);
+    suma = numeros.reduce(function (acumulador, numero) { return acumulador + numero; }, 0);
 
     document.getElementById("resultado-ej9").innerHTML +=
         "<div class='alert alert-success'>Suma total: " + suma + "</div>";
@@ -587,6 +587,7 @@ function mostrarArray(titulo, array) {
 // ===================================
 
 var biblioteca = [];
+var indiceEdicion = -1;
 
 function agregarLibro() {
     // TODO: Obtener valores de los inputs
@@ -595,9 +596,9 @@ function agregarLibro() {
     var año = parseFloat(document.getElementById("libro-year").value);  // TODO: Obtener y convertir a número
     var genero = document.getElementById("libro-genero");
     var generoSeleccionado = genero.options[genero.selectedIndex].text;
-    
 
-    var errores=[];
+
+    var errores = [];
     // TODO: Validar que todos los campos estén compvaros
     if (titulo == "") {
         errores.push("Título");
@@ -613,10 +614,10 @@ function agregarLibro() {
     }
 
     if (errores[0]) {
-        if(errores.length>1){
+        if (errores.length > 1) {
             var html = "<div class='alert alert-danger text-danger'><b>" + errores.join(", ") + "</b> no son valores válidos</div>";
             document.getElementById("resultado-ej10").innerHTML = html;
-        }else{
+        } else {
             var html = "<div class='alert alert-danger text-danger'><b>" + errores.join(", ") + "</b> no es un valor válido</div>";
             document.getElementById("resultado-ej10").innerHTML = html;
         }
@@ -639,58 +640,58 @@ function agregarLibro() {
 
         // Mostrar mensaje de confirmación y actualizar visualización
         var success = `<div class='alert alert-success'>Libro añadido correctamente</div>`;
-        mostrarLibros(biblioteca,success);
+        mostrarLibros(biblioteca, success);
     }
 }
 function filtrarPorGenero() {
     // TODO: Obtener género seleccionado
     // TODO: Filtrar libros por género
-    
+
     var librosFiltrados = []; // TODO: Implementar filter
     var genero = document.getElementById("libro-genero");
     var generoSeleccionado = genero.options[genero.selectedIndex].text;
-    biblioteca.filter(function(a){
-            if(a.genero == generoSeleccionado){
-                librosFiltrados.push(a);
-            }
-            
+    biblioteca.filter(function (a) {
+        if (a.genero == generoSeleccionado) {
+            librosFiltrados.push(a);
+        }
+
     });
 
     mostrarLibros(librosFiltrados);
 }
 
 function librosRecientes() {
-    
+
     // TODO: Filtrar libros publicados después del 2020
     var recientes = []; // TODO: Implementar filter
-    biblioteca.filter(function(a){
-            if(a.año > 2020){
-                recientes.push(a);
-            }
-            
+    biblioteca.filter(function (a) {
+        if (a.año > 2020) {
+            recientes.push(a);
+        }
+
     });
     mostrarLibros(recientes);
 }
 
 function ordenarPorTitulo() {
-    
+
     // TODO: Ordenar libros por título alfabéticamente
-    
+
     var librosOrdenados = []; // TODO: Implementar sort
-    librosOrdenados = [...biblioteca].sort(function(a,b){
+    librosOrdenados = [...biblioteca].sort(function (a, b) {
         return a.titulo.toLowerCase().localeCompare(b.titulo.toLowerCase());
-   });
-   
+    });
+
     mostrarLibros(librosOrdenados);
 }
 
 function mostrarBiblioteca() {
-    
+
     // TODO: Mostrar todos los libros de la biblioteca
     mostrarLibros(biblioteca);
 }
 
-function mostrarLibros(arrayLibros,alerta="") {
+function mostrarLibros(arrayLibros, alerta = "") {
     // Mostrar libros en formato de tarjetas HTML
     var html = `${alerta}`;
 
@@ -698,23 +699,91 @@ function mostrarLibros(arrayLibros,alerta="") {
         html = "<div class='alert alert-warning'>No hay libros para mostrar</div>";
     } else {
         html += `<div class="container row">`;
-        arrayLibros.forEach(function (libro)  {
-            
-            html += `<div class="card m-1 col-3">
-                        <div class="card-body">
+        arrayLibros.forEach(function (libro) {
+
+            html += `<div class="card m-1 container col-3 " >
+                        <div class="card-body  ">
                             <h5 class="card-title text-center">${libro.titulo}</h5>
                             <p class="card-text"><b>Autor:</b> ${libro.autor}</p>
                             <p class="card-text"><b>Año:</b> ${libro.año}</p>
                             <p class="card-text"><b>Género:</b> ${libro.genero}</p>
                         </div>
+                        <div class="card-body container row">
+                            <button class="btn btn-danger m-1 col-6" onclick="eliminarLibro('${libro.titulo}')">Eliminar</button>
+                            <button class="btn btn-warning m-1 col-5" onclick="editarLibro('${libro.titulo}')">Editar</button>
+                        </div>
                     </div>`;
         });
-        html +="</div>";
+        html += "</div>";
     }
 
     document.getElementById("resultado-ej10").innerHTML = html;
 }
-    
+function eliminarLibro(titulo) {
+
+    if (!biblioteca || biblioteca.length === 0) {
+        document.getElementById("resultado-ej10").innerHTML = "<div class='alert alert-danger text-danger'>No hay libros en la biblioteca</div>";
+        return;
+    }
+
+    var indice = -1;
+    for (var i = 0; i < biblioteca.length; i++) {
+        if (biblioteca[i].titulo === titulo) {
+            indice = i;
+            break;
+        }
+    }
+
+    if (indice === -1) {
+        document.getElementById("resultado-ej10").innerHTML = "<div class='alert alert-warning text-warning'>No se encontró el libro solicitado</div>";
+        return;
+    }
+
+    var eliminado = biblioteca.splice(indice, 1)[0];
+    document.getElementById("resultado-ej10").innerHTML = "<div class='alert alert-success'>Libro eliminado correctamente</div>";
+
+
+
+}
+
+
+
+function editarLibro(tituloDelLibro) {
+
+    // Buscamos el libro en el array
+    indiceEdicion = biblioteca.findIndex(libro => libro.titulo === tituloDelLibro);
+
+    if (indiceEdicion === -1) return;
+
+    // Rellenamos los campos del modal con los valores del libro
+    document.getElementById("modal-titulo").value = biblioteca[indiceEdicion].titulo;
+    document.getElementById("modal-autor").value = biblioteca[indiceEdicion].autor;
+    document.getElementById("modal-year").value = biblioteca[indiceEdicion].año;
+    document.getElementById("modal-genero").value = biblioteca[indiceEdicion].genero;
+
+    // Mostrar modal
+    modalEj10.show();
+}
+const modalEj10 = new bootstrap.Modal(document.getElementById("modalEj10"));
+document.getElementById("modal-guardar").addEventListener("click", function () {
+
+    if (indiceEdicion === -1) return;
+
+    // Tomamos los nuevos valores del modal
+    biblioteca[indiceEdicion].titulo = document.getElementById("modal-titulo").value;
+    biblioteca[indiceEdicion].autor = document.getElementById("modal-autor").value;
+    biblioteca[indiceEdicion].año = parseFloat(document.getElementById("modal-year").value);
+    biblioteca[indiceEdicion].genero = document.getElementById("modal-genero").value;
+
+    // Ocultar modal
+    modalEj10.hide();
+
+    mostrarLibros(biblioteca, "<div class='alert alert-success'>Libro modificado correctamente</div>");
+});
+
+
+
+
 
 // ===================================
 // EVENT LISTENERS - SOLO FALTAN LOS DEL EJERCICIO 10
@@ -768,12 +837,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ejercicio 10
     // TODO: Añadir event listeners para los botones del ejercicio 10
-    document.getElementById("btn-mostrar-biblioteca").addEventListener("click",mostrarBiblioteca);
-    document.getElementById("btn-ordenar-titulo").addEventListener("click",ordenarPorTitulo);
-    document.getElementById("btn-filtrar-genero").addEventListener("click",filtrarPorGenero);
-    document.getElementById("btn-libros-recientes").addEventListener("click",librosRecientes);
-    document.getElementById("btn-agregar-libro").addEventListener("click",agregarLibro);
-    
+    document.getElementById("btn-mostrar-biblioteca").addEventListener("click", mostrarBiblioteca);
+    document.getElementById("btn-ordenar-titulo").addEventListener("click", ordenarPorTitulo);
+    document.getElementById("btn-filtrar-genero").addEventListener("click", filtrarPorGenero);
+    document.getElementById("btn-libros-recientes").addEventListener("click", librosRecientes);
+    document.getElementById("btn-agregar-libro").addEventListener("click", agregarLibro);
+
 
 });
 
