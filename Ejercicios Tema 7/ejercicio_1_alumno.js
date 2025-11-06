@@ -12,7 +12,7 @@ document.getElementById('run-e1').addEventListener('click', function () {
 
 
     const raizCuadrada = (numero) => Math.sqrt(numero);
-    var res = raizCuadrada(v);
+    let res = raizCuadrada(v);
 
     out.textContent = `Resultado: ${res}`;
   }
@@ -35,7 +35,7 @@ document.getElementById('run-e3').addEventListener('click', function () {
   const a = parseFloat(document.getElementById("a-e3a").value);
   const b = parseFloat(document.getElementById("a-e3b").value);
   const suma = new Function('a', 'b', 'return a + b');
-  var res = suma(a, b);
+  let res = suma(a, b);
   document.getElementById("out-e3").textContent = `Suma total = ${res}`
 
 });
@@ -44,8 +44,8 @@ document.getElementById('run-e3').addEventListener('click', function () {
 document.getElementById('run-e4').addEventListener('click', function () {
   // TODO: reproduce el ejemplo en el código editando esta función.
   mostrar(msg);
-  var contenido = `El resultado es que en consola el mensaje aparece primero como: ${msg} y luego como:`;
-  var msg = "texto-prueba";
+  let contenido = `El resultado es que en consola el mensaje aparece primero como: ${msg} y luego como:`;
+  let msg = "texto-prueba";
 
   function mostrar(texto) {
     console.log(texto)
@@ -73,7 +73,7 @@ document.getElementById('run-e6').addEventListener('click', function () {
   // TODO: define y usa esa función para devolver el resultado
   const dividir = function (a, b) {
 
-   return b===0 ?   "No puedes dividir entre 0" :  "La el resultado de la división es: "+ (a / b);
+    return b === 0 ? "No puedes dividir entre 0" : "La el resultado de la división es: " + (a / b);
   };
   const a = parseFloat(document.getElementById("a-e6a").value);
   const b = parseFloat(document.getElementById("a-e6b").value);
@@ -101,7 +101,7 @@ document.getElementById('run-e8').addEventListener('click', function () {
 
   // TODO: implementar function saludar
   const nombre = document.getElementById("a-e8").value;
-  var saludar = function (nombre = 'Invitado') {
+  let saludar = function (nombre = 'Invitado') {
     return `Hola, ${nombre}`
   }
   if (nombre === "") {
@@ -112,13 +112,13 @@ document.getElementById('run-e8').addEventListener('click', function () {
 
 
 });
-
+let contador = 0;
 // Ejercicio 9 - Funciones anidadas (plantilla)
 document.getElementById('run-e9').addEventListener('click', function () {
 
   // TODO: implementar función externa e interna
   function externa() {
-    let contador = 0;
+
     contador++;
     function interna() {
       document.getElementById("out-e9").textContent = `${contador} funcion interna`;
@@ -136,9 +136,12 @@ document.getElementById('run-e10').addEventListener('click', function () {
   // TODO: usa los métodos nativos vistos (length, toUpperCase, trim, indexOf, Math.random, Date.now)
   const frase = document.getElementById("a-e10").value;
 
-  var html = `Length: ${frase.length} <br>toUpperCase: ${frase.toUpperCase()}<br>
-        trim: "${frase.trim()}" <br>indexOf 'Mundo': ${frase.indexOf('Mundo')} 
-        <br> Math.random(): ${Math.random().toFixed(4)} <br>Date.now(): ${Date(Date.now()).toLocaleString()} `;
+  let html = `Length: ${frase.length} <br>
+              toUpperCase: ${frase.toUpperCase()}<br>
+              trim: "${frase.trim()}" <br>
+              indexOf 'Mundo': ${frase.indexOf('Mundo')}<br>
+              Math.random(): ${Math.random().toFixed(4)} <br>
+              Date.now(): ${Date(Date.now()).toLocaleString()} `;
 
   document.getElementById("out-e10").innerHTML = html;
 
