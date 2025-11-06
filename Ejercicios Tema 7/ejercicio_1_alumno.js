@@ -44,8 +44,8 @@ document.getElementById('run-e3').addEventListener('click', function () {
 document.getElementById('run-e4').addEventListener('click', function () {
   // TODO: reproduce el ejemplo en el código editando esta función.
   mostrar(msg);
-  let contenido = `El resultado es que en consola el mensaje aparece primero como: ${msg} y luego como:`;
-  let msg = "texto-prueba";
+  var contenido = `El resultado es que en consola el mensaje aparece primero como: ${msg} y luego como:`;
+  var msg = "texto-prueba";
 
   function mostrar(texto) {
     console.log(texto)
