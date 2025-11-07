@@ -168,16 +168,19 @@
 
 
 			});
+
 			document.getElementById("bs-form-ej2").addEventListener('submit', function (e) {
 				e.preventDefault();
 
 				document.getElementById("bs-msg-ej2").innerHTML = "<div class='alert alert-success'>Enviado con exito</div>";
 
 			});
+
 			document.getElementById("bs-form-ej3").addEventListener('submit', function (e) {
 				e.preventDefault();
 				document.getElementById("bs-msg-ej3").innerHTML = "<div class='alert alert-success'>Enviado con exito</div>";
 			});
+
 			document.getElementById("bs-form-ej4").addEventListener('submit', function (e) {
 				e.preventDefault();
 				const contraseña1 = this.clave.value.trim();
@@ -189,10 +192,8 @@
 
 				}
 
-
-
-
 			});
+
 			document.getElementById("bs-form-ej5").addEventListener('submit', function (e) {
 				e.preventDefault();
 				const contraseña1 = this.clave.value.trim();
@@ -207,7 +208,12 @@
 						edad: this.edad.value.trim(),
 						terminos: this.terminos.checked
 					};
-					document.getElementById("bs-msg-ej5").innerHTML += `<div class="alert alert-warning"><b>Nuevo usuario creado</b><br>Nombre: ${nuevoUsuario.nombre}<br>Email: ${nuevoUsuario.email}<br>Edad: ${nuevoUsuario.edad}<br>Acepta_termninos: ${nuevoUsuario.terminos}<br></div>`;
+					document.getElementById("bs-msg-ej5").innerHTML += `<div class="alert alert-warning">
+						<b>Nuevo usuario creado</b>
+						<br>Nombre: ${nuevoUsuario.nombre}
+						<br>Email: ${nuevoUsuario.email}
+						<br>Edad: ${nuevoUsuario.edad}
+						<br>Acepta_termninos: ${nuevoUsuario.terminos}<br></div>`;
 				} else {
 					document.getElementById("bs-msg-ej5").innerHTML = "<div class='alert alert-danger '>Las contraseñas no coinciden</div>";
 
