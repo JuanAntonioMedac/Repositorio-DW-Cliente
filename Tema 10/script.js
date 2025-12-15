@@ -45,12 +45,13 @@ function validarCampos(email, pass) {
     }
     return true;
 }
-
-var formulario = document.getElementById('loginForm');
-var boton = document.getElementById('submitBtn');
-var spinner = document.getElementById('loadingSpinner');
-var inputEmail = document.getElementById('email');
-var inputPass = document.getElementById('password');
+window.addEventListener('DOMContentLoaded', function () {
+    var formulario = document.getElementById('loginForm');
+    var boton = document.getElementById('submitBtn');
+    var spinner = document.getElementById('loadingSpinner');
+    var inputEmail = document.getElementById('email');
+    var inputPass = document.getElementById('password');
+});
 
 
 formulario.addEventListener('submit', async function (e) {
