@@ -389,12 +389,6 @@
       //     - Actualiza #ej5Estado con "Estado: ✅ usuarios cargados (N)"
       //     - Habilita el botón de nuevo
       $("#ej5Btn").on("click", function() {
-
-      });
-      // TODO: Al pulsar #ej5Clear:
-      //  1) Vacía #ej5Lista
-      //  2) Actualiza #ej5Estado a "Estado: lista limpiada."
-      $("#ej5Btn").on("click", function() {
         $(this).prop("disabled", true);
         $("#ej5Estado").text("Estado: Cargando usuarios...")
         $("#ej5Lista").empty();
@@ -406,6 +400,10 @@
           $("#ej5Btn").prop("disabled", false);
         }, 600);
       });
+      // TODO: Al pulsar #ej5Clear:
+      //  1) Vacía #ej5Lista
+      //  2) Actualiza #ej5Estado a "Estado: lista limpiada."
+     
 
       $("#ej5Clear").on("click", function() {
         $("#ej5Lista").empty();
