@@ -29,7 +29,7 @@
         .categoria-badge {
             position: absolute;
             top: 10px;
-            left: 10px;
+            right: 10px;
             z-index: 10;
         }
     </style>
@@ -65,7 +65,7 @@
                             </h5>
                         </div>
                         <div class="col-md-4 ms-auto">
-                            <select id="categoriaSelect" class="form-select form-select-lg" onchange="cargarPeliculasPorCategoria()">
+                            <select id="categoriaSelect" class="form-select form-select-lg" >
                                 <option value="">-- Todas las categorías --</option>
                                 @foreach($categorias as $categoria)
                                     <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
@@ -107,6 +107,9 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     cargarTodasPeliculas();
+});
+document.getElementById('categoriaSelect').addEventListener('change', function() {
+    cargarPeliculasPorCategoria();
 });
 
 function mostrarCargando() {
@@ -160,7 +163,7 @@ function mostrarPeliculas(peliculas, titulo) {
     const areaPeliculas = document.getElementById('areaPeliculas');
     areaPeliculas.innerHTML = '';
 
-    if(peliculas.length === 0) {
+    if (peliculas.length === 0) {
         areaPeliculas.innerHTML = `
             <div class="alert alert-info text-center" role="alert">
                 <i class="bi bi-info-circle fs-1"></i>
@@ -183,24 +186,25 @@ function mostrarPeliculas(peliculas, titulo) {
     peliculas.forEach(pelicula => {
         const imagenPelicula = pelicula.imagen || 'https://placehold.co/300x400?text=Sin+Imagen';
         const categoriaNombre = pelicula.categoria ? pelicula.categoria.nombre : 'Sin categoría';
+
         html += `
             <div class="col">
                 <div class="card pelicula-card h-100 shadow-sm">
                     <div class="position-relative">
-                        <span class="badge bg-secondary categoria-badge">${categoriaNombre}</span>
+                        <span class="badge bg-primary categoria-badge">${categoriaNombre}</span>
                         <img src="${imagenPelicula}" alt="${pelicula.nombre}" class="pelicula-img card-img-top"
-                             onerror="this.src='https://placehold.co/300x400?text=Error+al+Cargar'">
+                            onerror="this.src='https://placehold.co/300x400?text=Error+al+Cargar'">
                     </div>
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${pelicula.nombre}</h5>
                         <div class="mt-auto">
                             ${pelicula.url_imdb ? `
-                            <a href="${pelicula.url_imdb}" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="bi bi-link-45deg"></i> Ver en IMDB
-                            </a>`:`
-                            <button class="btn btn-secondary w-100" disabled>
-                                <i class="bi bi-x-circle"></i> Sin enlace IMDB
-                            </button>`}
+                                <a href="${pelicula.url_imdb}" target="_blank" class="btn btn-warning w-100">
+                                    <i class="bi bi-link-45deg"></i> Ver en IMDB
+                                </a>` : `
+                                <button class="btn btn-secondary w-100" disabled>
+                                    <i class="bi bi-x-circle"></i> Sin enlace IMDB
+                                </button>`}
                         </div>
                     </div>
                 </div>
