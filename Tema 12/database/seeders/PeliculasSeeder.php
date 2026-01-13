@@ -23,36 +23,70 @@ class PeliculasSeeder extends Seeder
         $animacion=Categoria::create(['nombre'=>'Animación']);
         //crear peliculas ejemplo
         $peliculas=[
-        // Acción
-        ['nombre'=>'Mad Max: Fury Road','categoria_id'=>$accion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/8DDC2B5WTV5THMKcTiLZBqkXQe7.jpg','url_imdb'=>'https://www.imdb.com/title/tt1392190/'],
-        ['nombre'=>'John Wick','categoria_id'=>$accion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/xnopI5Cer5ae65c9zaWyuVmHwrJ.jpg','url_imdb'=>'https://www.imdb.com/title/tt2911666/'],
-        ['nombre'=>'Die Hard','categoria_id'=>$accion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/yC0BYuzKG5g6coWWt2v7IApHu0r.jpg','url_imdb'=>'https://www.imdb.com/title/tt0095016/'],
+             // Acción
+            ['nombre'=>'The Dark Knight','categoria_id'=>$accion->id,'imagen'=>'https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg','url_imdb'=>'https://www.imdb.com/title/tt0468569/'],
+            ['nombre'=>'Gladiator','categoria_id'=>$accion->id,'imagen'=>'https://image.tmdb.org/t/p/original/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg','url_imdb'=>'https://www.imdb.com/title/tt0172495/'],
+            ['nombre'=>'The Avengers','categoria_id'=>$accion->id,'imagen'=>'https://image.tmdb.org/t/p/original/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg','url_imdb'=>'https://www.imdb.com/title/tt0848228/'],
 
-        // Comedia
-        ['nombre'=>'Superbad','categoria_id'=>$comedia->id,'imagen'=>'https://image.tmdb.org/t/p/w300/lJI1vBHaJZvd7qVXhAKD6Y2RjuL.jpg','url_imdb'=>'https://www.imdb.com/title/tt0829482/'],
-        ['nombre'=>'The Hangover','categoria_id'=>$comedia->id,'imagen'=>'https://image.tmdb.org/t/p/w300/tmeVHN0fB0bMfKfqH5tVmFfEwX2.jpg','url_imdb'=>'https://www.imdb.com/title/tt1119646/'],
-        ['nombre'=>'Step Brothers','categoria_id'=>$comedia->id,'imagen'=>'https://image.tmdb.org/t/p/w300/6wRVJqfpzz1eI8V6xHQwDzzfCPz.jpg','url_imdb'=>'https://www.imdb.com/title/tt0838283/'],
+            // Comedia
+            [
+                'nombre' => 'Superbad',
+                'categoria_id' => $comedia->id,
+                'imagen' => 'https://image.tmdb.org/t/p/original/ek8e8txUyUwd2BNqj6lFEerJfbq.jpg',
+                'url_imdb' => 'https://www.imdb.com/title/tt0829482/'
+            ],
+            [
+                'nombre' => 'The Hangover',
+                'categoria_id' => $comedia->id,
+                'imagen' => 'https://m.media-amazon.com/images/M/MV5BMTU1MDA1MTYwMF5BMl5BanBnXkFtZTcwMDcxMzA1Mg@@._V1_FMjpg_UX490_.jpg',
+                'url_imdb' => 'https://www.imdb.com/title/tt1119646/'
+            ],
+            [
+                'nombre' => 'Step Brothers',
+                'categoria_id' => $comedia->id,
+                'imagen' => 'https://m.media-amazon.com/images/M/MV5BODkxOGRkY2UtOTA4Zi00YjE3LTk4NTItOGY3YWU4MWRlODZmXkEyXkFqcGc@._V1_FMjpg_UX508_.jpg',
+                'url_imdb' => 'https://www.imdb.com/title/tt0838283/'
+            ],
+            // Drama
+            ['nombre'=>'The Godfather: Part II','categoria_id'=>$drama->id,'imagen'=>'https://image.tmdb.org/t/p/original/amvmeQWheahG3StKwIE1f7jRnkZ.jpg','url_imdb'=>'https://www.imdb.com/title/tt0071562/'],
+            ['nombre'=>'Schindler\'s List','categoria_id'=>$drama->id,'imagen'=>'https://image.tmdb.org/t/p/original/c8Ass7acuOe4za6DhSattE359gr.jpg','url_imdb'=>'https://www.imdb.com/title/tt0108052/'],
+            ['nombre'=>'Fight Club','categoria_id'=>$drama->id,'imagen'=>'https://image.tmdb.org/t/p/original/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg','url_imdb'=>'https://www.imdb.com/title/tt0137523/'],
 
-        // Drama
-        ['nombre'=>'The Shawshank Redemption','categoria_id'=>$drama->id,'imagen'=>'https://image.tmdb.org/t/p/w300/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg','url_imdb'=>'https://www.imdb.com/title/tt0111161/'],
-        ['nombre'=>'Forrest Gump','categoria_id'=>$drama->id,'imagen'=>'https://image.tmdb.org/t/p/w300/clolk7rB5lAjs41SD0Vt6IXYLMm.jpg','url_imdb'=>'https://www.imdb.com/title/tt0109830/'],
-        ['nombre'=>'The Godfather','categoria_id'=>$drama->id,'imagen'=>'https://image.tmdb.org/t/p/w300/3bhkrj58Vtu7enYsRolD1fZdja1.jpg','url_imdb'=>'https://www.imdb.com/title/tt0068646/'],
+            // Terror
+             [
+                'nombre' => 'It',
+                'categoria_id' => $terror->id,
+                'imagen' => 'https://m.media-amazon.com/images/M/MV5BMjIzZWM4NjktMjZjZS00ZTA3LWJhODEtNzE1MWFkNDEzODVlXkEyXkFqcGc@._V1_FMjpg_UY4096_.jpg',
+                'url_imdb' => 'https://www.imdb.com/title/tt1396484/'
+            ],
+            [
+                'nombre' => 'The Ring',
+                'categoria_id' => $terror->id,
+                'imagen' => 'https://m.media-amazon.com/images/M/MV5BMTg1MjQzNjk2Nl5BMl5BanBnXkFtZTYwMjYwNDk5._V1_FMjpg_UX261_.jpg',
+                'url_imdb' => 'https://www.imdb.com/title/tt0298130/'
+            ],
+            ['nombre'=>'A Quiet Place','categoria_id'=>$terror->id,'imagen'=>'https://image.tmdb.org/t/p/original/nAU74GmpUk7t5iklEp3bufwDq4n.jpg','url_imdb'=>'https://www.imdb.com/title/tt6644200/'],
 
-        // Terror
-        ['nombre'=>'The Conjuring','categoria_id'=>$terror->id,'imagen'=>'https://image.tmdb.org/t/p/w300/nJMEQDJQsIMfnF3V2LTJtNzLfGo.jpg','url_imdb'=>'https://www.imdb.com/title/tt1457767/'],
-        ['nombre'=>'Get Out','categoria_id'=>$terror->id,'imagen'=>'https://image.tmdb.org/t/p/w300/2k3T0fEe8sVKrA5JnX7BKQG9aEY.jpg','url_imdb'=>'https://www.imdb.com/title/tt5052448/'],
-        ['nombre'=>'A Nightmare on Elm Street','categoria_id'=>$terror->id,'imagen'=>'https://image.tmdb.org/t/p/w300/yTc6K2RcLcHH8oZFN5PkwJfUhAc.jpg','url_imdb'=>'https://www.imdb.com/title/tt0087800/'],
+             // Ciencia Ficción
+             [
+                'nombre' => 'The Matrix',
+                'categoria_id' => $ciencia_ficcion->id,
+                'imagen' => 'https://m.media-amazon.com/images/I/51EG732BV3L._AC_.jpg',
+                'url_imdb' => 'https://www.imdb.com/title/tt0133093/'
+            ],
+            [
+                'nombre' => 'Interstellar',
+                'categoria_id' => $ciencia_ficcion->id,
+                'imagen' => 'https://m.media-amazon.com/images/M/MV5BNTE0MmZiNGEtOGY3NS00NDcyLWFiYTItM2IwMWI4YzBkMzk3XkEyXkFqcGc@._V1_FMjpg_UY4134_.jpg',
+                'url_imdb' => 'https://www.imdb.com/title/tt0816692/'
+            ],
+            ['nombre'=>'Inception','categoria_id'=>$ciencia_ficcion->id,'imagen'=>'https://image.tmdb.org/t/p/original/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg','url_imdb'=>'https://www.imdb.com/title/tt1375666/'],
 
-        // Ciencia Ficción
-        ['nombre'=>'Inception','categoria_id'=>$ciencia_ficcion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg','url_imdb'=>'https://www.imdb.com/title/tt1375666/'],
-        ['nombre'=>'The Matrix','categoria_id'=>$ciencia_ficcion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg','url_imdb'=>'https://www.imdb.com/title/tt0133093/'],
-        ['nombre'=>'Interstellar','categoria_id'=>$ciencia_ficcion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg','url_imdb'=>'https://www.imdb.com/title/tt0816692/'],
-
-        // Animación
-        ['nombre'=>'Toy Story','categoria_id'=>$animacion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/fNG7aKqK19cV8z5QmHXw9pSnVaV.jpg','url_imdb'=>'https://www.imdb.com/title/tt0114709/'],
-        ['nombre'=>'Finding Nemo','categoria_id'=>$animacion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/yF2fJWXrp5GHjUNMSGqYSA1i2Ef.jpg','url_imdb'=>'https://www.imdb.com/title/tt0266543/'],
-        ['nombre'=>'The Lion King','categoria_id'=>$animacion->id,'imagen'=>'https://image.tmdb.org/t/p/w300/sKCr78MXSLixwmL3DI2451XwilJ.jpg','url_imdb'=>'https://www.imdb.com/title/tt0110357/'],
-
+            // Animación
+            ['nombre'=>'Spirited Away','categoria_id'=>$animacion->id,'imagen'=>'https://image.tmdb.org/t/p/original/dL11DBPcRhWWnJcFXl9A07MrqTI.jpg','url_imdb'=>'https://www.imdb.com/title/tt0245429/'],
+            ['nombre'=>'Coco','categoria_id'=>$animacion->id,'imagen'=>'https://image.tmdb.org/t/p/original/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg','url_imdb'=>'https://www.imdb.com/title/tt2380307/'],
+            ['nombre'=>'Moana','categoria_id'=>$animacion->id,'imagen'=>'https://image.tmdb.org/t/p/original/wKiOkZTN9lUUUNZLmtnwubZYONg.jpg','url_imdb'=>'https://www.imdb.com/title/tt3521164/'],
+         
         ];
         foreach($peliculas as $pelicula){
             Pelicula::create($pelicula);

@@ -92,7 +92,7 @@
 
 <footer class="bg-dark text-white text-center py-3">
     <div class="container">
-        <p class="mb-0">&copy; 2025 Catalogo de Películas. Todos los derechos reservados.</p>
+        <p class="mb-0">&copy; 2026 Catalogo de Películas. Todos los derechos reservados.</p>
     </div>
 </footer>
 
