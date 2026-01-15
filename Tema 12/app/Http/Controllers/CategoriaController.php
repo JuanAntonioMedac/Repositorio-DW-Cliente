@@ -9,6 +9,7 @@ class CategoriaController extends Controller
 {
     public function peliculas($categoriaId){
     $categoria=Categoria::with('peliculas')->findOrFail($categoriaId);
-    return response()->json($categoria->peliculas);
+    $peliculas = $categoria->peliculas()->with('categoria')->get();
+    return response()->json($peliculas);
     }
 }

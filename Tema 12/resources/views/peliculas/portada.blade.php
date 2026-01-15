@@ -14,23 +14,177 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <style>
+        /* Animaciones y transiciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes skeletonLoading {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Estilos generales con transiciones */
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
         .pelicula-card {
-            transition: transform 0.2s;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.3s ease,
+                        opacity 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+            opacity: 1;
         }
+
         .pelicula-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
+
         .pelicula-img {
             width: 100%;
             height: 400px;
             object-fit: cover;
+            transition: filter 0.3s ease;
         }
+
+        .pelicula-card:hover .pelicula-img {
+            filter: brightness(1.1);
+        }
+
         .categoria-badge {
             position: absolute;
             top: 10px;
             right: 10px;
             z-index: 10;
+            animation: slideIn 0.4s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        .categoria-badge:hover {
+            transform: scale(1.1);
+        }
+
+        /* Transiciones para elementos */
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        select {
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        /* Skeleton Screen */
+        .skeleton {
+            background: linear-gradient(
+                90deg,
+                #f0f0f0 25%,
+                #e0e0e0 50%,
+                #f0f0f0 75%
+            );
+            background-size: 1000px 100%;
+            animation: skeletonLoading 2s infinite;
+        }
+
+        .skeleton-card {
+            background: white;
+            border-radius: 0.375rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .skeleton-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+        }
+
+        .skeleton-text {
+            height: 1rem;
+            border-radius: 0.375rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skeleton-button {
+            height: 2.5rem;
+            border-radius: 0.375rem;
+            margin-top: 1rem;
+        }
+
+        /* Transición para filtros */
+        #areaPeliculas {
+            transition: opacity 0.3s ease;
+        }
+
+        #areaPeliculas.fade-out {
+            opacity: 0;
+        }
+
+        #areaPeliculas.fade-in {
+            animation: fadeInUp 0.5s ease-out;
+            opacity: 1;
+        }
+
+        /* Animación para título */
+        h2 {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Estilos para botón de reset */
+        .btn-reset {
+            animation: slideIn 0.4s ease-out;
+        }
+
+        /* Transición para alertas */
+        .alert {
+            animation: fadeInUp 0.4s ease-out;
+            transition: opacity 0.3s ease;
         }
     </style>
 </head>
@@ -64,13 +218,18 @@
                                 <i class="bi bi-funnel"></i> Filtrar por categorías
                             </h5>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-7">
                             <select id="categoriaSelect" class="form-select form-select-lg" >
                                 <option value=""> Todas las categorías </option>
                                 @foreach($categorias as $categoria)
                                     <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button id="btnReset" class="btn btn-outline-secondary btn-reset w-100" title="Limpiar filtros">
+                                <i class="bi bi-arrow-clockwise"></i> Reset
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -108,17 +267,50 @@
 document.addEventListener('DOMContentLoaded', function() {
     cargarTodasPeliculas();
 });
+
 document.getElementById('categoriaSelect').addEventListener('change', function() {
     cargarPeliculasPorCategoria();
+});
+
+// Event listener para el botón reset
+document.getElementById('btnReset').addEventListener('click', function() {
+    document.getElementById('categoriaSelect').value = '';
+    cargarTodasPeliculas();
 });
 
 function mostrarCargando() {
     document.getElementById('cargandoPeliculas').classList.remove('d-none');
     document.getElementById('areaPeliculas').innerHTML = '';
+    mostrarSkeletonLoading();
 }
 
 function ocultarCargando() {
     document.getElementById('cargandoPeliculas').classList.add('d-none');
+}
+
+// Función para mostrar skeleton screens
+function mostrarSkeletonLoading() {
+    const areaPeliculas = document.getElementById('areaPeliculas');
+    let skeletonHTML = `
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+    `;
+    
+    // Crear 8 skeleton cards
+    for (let i = 0; i < 8; i++) {
+        skeletonHTML += `
+            <div class="col">
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton skeleton-text" style="width: 90%;"></div>
+                    <div class="skeleton skeleton-text" style="width: 70%;"></div>
+                    <div class="skeleton skeleton-button"></div>
+                </div>
+            </div>
+        `;
+    }
+    
+    skeletonHTML += `</div>`;
+    areaPeliculas.innerHTML = skeletonHTML;
 }
 
 // Función para cargar todas las películas
@@ -161,6 +353,8 @@ async function cargarPeliculasPorCategoria() {
 // Función para mostrar las películas en tarjetas
 function mostrarPeliculas(peliculas, titulo) {
     const areaPeliculas = document.getElementById('areaPeliculas');
+    areaPeliculas.classList.remove('fade-in');
+    void areaPeliculas.offsetWidth; // Trigger reflow para resetear la animación
     areaPeliculas.innerHTML = '';
 
     if (peliculas.length === 0) {
@@ -170,6 +364,7 @@ function mostrarPeliculas(peliculas, titulo) {
                 <h4 class="mt-3">No hay películas de esta categoría</h4>
                 <p>Intente con otra categoría o ver todas las películas.</p>
             </div>`;
+        areaPeliculas.classList.add('fade-in');
         return;
     }
 
@@ -214,6 +409,7 @@ function mostrarPeliculas(peliculas, titulo) {
 
     html += `</div>`;
     areaPeliculas.innerHTML = html;
+    areaPeliculas.classList.add('fade-in');
 }
 
 // Función para mostrar errores
@@ -229,6 +425,7 @@ function mostrarError(mensaje) {
             </button>
         </div>
     `;
+    areaPeliculas.classList.add('fade-in');
 }
 </script>
 
