@@ -59,14 +59,14 @@
             <div class="card shadow">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5 class="mb-0">
                                 <i class="bi bi-funnel"></i> Filtrar por categorías
                             </h5>
                         </div>
-                        <div class="col-md-4 ms-auto">
+                        <div class="col-md-9">
                             <select id="categoriaSelect" class="form-select form-select-lg" >
-                                <option value="">-- Todas las categorías --</option>
+                                <option value=""> Todas las categorías </option>
                                 @foreach($categorias as $categoria)
                                     <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                                 @endforeach
