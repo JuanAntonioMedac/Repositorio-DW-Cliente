@@ -1,0 +1,51 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Tareas</h4>
+      <input type="text" class="form-control mb-3" placeholder="Nueva tarea" [(ngModel)]="nuevaTarea" />
+      <button class="btn btn-primary mb-3" (click)="agregarTarea()">Añadir Tarea</button>
+      <p class="card-text">Lista de tareas mostradas</p>
+    </div>
+    @if(tareas.length === 0){
+    <div class="alert alert-info m-2" role="alert">
+      No hay tareas
+    </div>
+    }@else {
+    <ul class="list-group list-group-flush">
+
+
+      @for (tarea of tareas;track $index) {
+      <li class="list-group-item">
+        <div class="form-check form-switch">
+          <input class="form-check-input me-2" type="checkbox" [id]="'check-' + $index" [(ngModel)]="tarea.completada"
+            (change)="guardarTareas()">
+
+          <label class="form-check-label" [class.text-decoration-line-through]="tarea.completada"
+            [for]="'check-' + $index">{{ tarea.texto }}</label>
+
+          <button class="btn btn-sm btn-danger float-end " (click)="eliminarTarea($index)">Eliminar</button>
+        </div>
+      </li>
+      }
+
+
+    </ul>}
+    <div class="card-footer bg-light">
+      <div class="row text-center">
+        <div class="col">
+          <h6 class="mb-0">Total</h6>
+          <span class="badge bg-primary rounded-pill">{{ tareas.length }}</span>
+        </div>
+        <div class="col">
+          <h6 class="mb-0">Completadas</h6>
+          <span class="badge bg-success rounded-pill">{{ tareasCompletadas }}</span>
+        </div>
+        <div class="col">
+          <h6 class="mb-0">Pendientes</h6>
+          <span class="badge bg-warning text-dark rounded-pill">{{ tareasPendientes }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
