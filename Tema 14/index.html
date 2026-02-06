@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarea - Almacenamiento Web</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container my-5">
+
+    <!-- HEADER -->
+    <div class="mb-5 text-center">
+      <h1 class="display-5">Tarea: Almacenamiento Web</h1>
+      <p class="lead">Prácticas con <strong>localStorage</strong> y <strong>sessionStorage</strong></p>
+    </div>
+
+    <!-- EJERCICIO 1 -->
+    <section class="mb-5">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="h5 mb-0">Ejercicio 1 – Preferencias de usuario con localStorage</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>Objetivo:</strong> Trabajar el almacenamiento persistente de datos en el navegador.</p>
+          <p><strong>Enunciado:</strong> Crea una página web que permita al usuario introducir su nombre y elegir un color de fondo para la página. Ambos datos deben guardarse utilizando localStorage.</p>
+          <p><strong>Requisitos:</strong></p>
+          <ul>
+            <li>Al recargar la página, los datos deben mantenerse.</li>
+            <li>El color de fondo debe aplicarse automáticamente al cargar la web.</li>
+            <li>Incluir un botón “Restablecer preferencias” que elimine los datos almacenados.</li>
+          </ul>
+          <div class="container">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="nombreUsuario" class="form-label">Nombre:</label>
+                <input type="text" id="nombreUsuario" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label for="colorFondo" class="form-label">Color de fondo:</label>
+                <input type="color" id="colorFondo" class="form-control form-control-color" value="000000" >
+              </div>
+            </div>
+            <button id="guardarPreferencias" class="btn btn-primary me-2">Guardar Preferencias</button>
+            <button id="restablecerPreferencias" class="btn btn-secondary">Restablecer Preferencias</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJERCICIO 2 -->
+    <section class="mb-5">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="h5 mb-0">Ejercicio 2 – Contador de visitas con localStorage</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>Objetivo:</strong> Reforzar la lectura, escritura y actualización de datos almacenados.</p>
+          <p><strong>Enunciado:</strong> Implementa un contador que muestre cuántas veces se ha visitado la página desde ese navegador.</p>
+          <p><strong>Requisitos:</strong></p>
+          <ul>
+            <li>El contador debe incrementarse automáticamente cada vez que se recarga la página.</li>
+            <li>Mostrar el número de visitas en pantalla.</li>
+            <li>Incluir un botón para reiniciar el contador.</li>
+          </ul>
+          <div id="ej2">
+            <h3>Visitas: <span id="contadorVisitas">0</span></h3>
+            <button id="reiniciarContador" class="my-2 btn btn-warning">Reiniciar Contador</button>
+          </div>
+          <div id="info2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJERCICIO 3 -->
+    <section class="mb-5">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="h5 mb-0">Ejercicio 3 – Almacenamiento temporal con sessionStorage</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>Objetivo:</strong> Comprender el funcionamiento del almacenamiento temporal.</p>
+          <p><strong>Enunciado:</strong> Crea un formulario con los campos: Nombre y Curso. Los datos deben guardarse usando sessionStorage.</p>
+          <p><strong>Requisitos:</strong></p>
+          <ul>
+            <li>Al recargar la página, los datos deben seguir visibles.</li>
+            <li>Al cerrar la pestaña o el navegador, los datos deben desaparecer.</li>
+            <li>Añadir un texto explicativo indicando por qué ocurre esto.</li>
+          </ul>
+          <form id="ej3" action="">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="nombreSesion" class="form-label">Nombre:</label>
+                <input type="text" id="nombreSesion" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label for="cursoSesion" class="form-label">Curso:</label>
+                <input type="text" id="cursoSesion" class="form-control" required>
+              </div>
+            </div>
+            <button type="submit" id="guardarSesion" class="btn btn-success">Guardar en sessionStorage</button>
+          </form>
+          <div id="info3"></div>
+          <p class="mt-2 text-muted">
+  <strong>Nota:</strong> Los datos de sessionStorage se mantienen al recargar, pero se pierden al cerrar la pestaña porque su ciclo de vida termina con la sesión del navegador.
+</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJERCICIO 4 -->
+    <section class="mb-5">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="h5 mb-0">Ejercicio 4 – Comparativa localStorage vs sessionStorage</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>Objetivo:</strong> Comparar de forma práctica ambos sistemas de almacenamiento.</p>
+          <p><strong>Enunciado:</strong> Crea una página con un campo de texto y dos botones: Guardar en localStorage y Guardar en sessionStorage. El mismo dato se guardará en ambos sistemas.</p>
+          <p><strong>Requisitos:</strong></p>
+          <ul>
+            <li>Mostrar en pantalla el valor almacenado en cada uno.</li>
+            <li>Comprobar y explicar qué ocurre al recargar la página, cerrar la pestaña y abrir una nueva pestaña.</li>
+          </ul>
+          <div id="ej4">
+            <div class="mb-3 row">
+              <div class="col-md-6">
+                <label for="datoEnLocal" class="form-label">Dato a almacenar en localStorage:</label>
+                <input type="text" id="datoEnLocal" class="form-control">
+                <button id="guardarLocal" class="btn btn-primary mt-2 me-2">Guardar en localStorage</button>
+              </div>
+              <div class="col-md-6">
+                <label for="datoEnSesion" class="form-label">Dato a almacenar en sessionStorage:</label>
+                <input type="text" id="datoEnSesion" class="form-control">
+                <button id="guardarSesion2" class="btn btn-secondary mt-2">Guardar en sessionStorage</button>
+              </div>
+            </div>
+            <div id="info4"></div>
+            <p class="mt-2 text-muted">
+              <strong>Nota:</strong> localStorage persiste aunque se cierre el navegador, mientras que sessionStorage se pierde al cerrar la pestaña.
+            </p>
+          </div>          
+      </div>
+    </section>
+
+    <!-- EJERCICIO 5 -->
+    <section class="mb-5">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="h5 mb-0">Ejercicio 5 – Lista de tareas con localStorage</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>Objetivo:</strong> Trabajar con arrays y objetos almacenados en el navegador.</p>
+          <p><strong>Enunciado:</strong> Desarrolla una pequeña aplicación de lista de tareas que permita añadir, mostrar y eliminar tareas. Las tareas deben almacenarse en localStorage.</p>
+          <p><strong>Requisitos:</strong></p>
+          <ul>
+            <li>Usar un array de objetos.</li>
+            <li>Convertir los datos con JSON.stringify() y JSON.parse().</li>
+            <li>Mantener la lista tras recargar la página.</li>
+            <li>Si hay varias pestañas abiertas, deben sincronizarse automáticamente.</li>
+          </ul>
+          <div id="ej5">
+            <div class="mb-3">
+              <label for="nuevaTarea" class="form-label">Nueva Tarea:</label>
+              <input type="text" id="nuevaTarea" class="form-control">
+              <button id="agregarTarea" class="btn btn-success mt-2">Agregar Tarea</button>
+              <button id="limpiarTareas" class="btn btn-danger mt-2 ms-2">Limpiar Tareas</button>
+             
+            <ul id="listaTareas" class="list-group"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

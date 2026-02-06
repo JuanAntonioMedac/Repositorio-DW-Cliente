@@ -6,7 +6,7 @@ interface Empleado {
 }
 
 // Implementación de un empleado empresarial
-class EmpleadoEmpresa implements Empleado {
+class  EmpleadoEmpresa implements Empleado {
   constructor(
     public id: number,
     public nombre: string,
