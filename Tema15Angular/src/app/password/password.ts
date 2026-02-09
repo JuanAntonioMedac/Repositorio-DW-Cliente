@@ -8,44 +8,44 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './password.css',
 })
 export class Password {
-  length: number = 10;
-  includeUppercase: boolean = true;
-  includeLowercase: boolean = true;
-  includeNumbers: boolean = true;
-  includeSymbols: boolean = true;
-  generatedPassword: string = '';
-  showError: boolean = false;
+  longitud: number = 10;
+  incluirMayusculas: boolean = true;
+  incluirMinusculas: boolean = true;
+  incluirNumeros: boolean = true;
+  incluirSimbolos: boolean = true;
+  contrasenaGenerada: string = '';
+  mostrarError: boolean = false;
 
-  generatePassword(): void {
-    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
-    const numberChars = '0123456789';
-    const symbolChars = '!@#$%^&*()_+[]{}|;:,.<>?';
+  generarContrasena(): void {
+    const mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const minusculas = 'abcdefghijklmnopqrstuvwxyz';
+    const numerosChars = '0123456789';
+    const simbolosChars = '!@#$%^&*()_+[]{}|;:,.<>?';
 
-    let allowedChars = '';
-    if (this.includeUppercase) allowedChars += uppercaseChars;
-    if (this.includeLowercase) allowedChars += lowercaseChars;
-    if (this.includeNumbers) allowedChars += numberChars;
-    if (this.includeSymbols) allowedChars += symbolChars;
+    let caracteresPermitidos = '';
+    if (this.incluirMayusculas) caracteresPermitidos += mayusculas;
+    if (this.incluirMinusculas) caracteresPermitidos += minusculas;
+    if (this.incluirNumeros) caracteresPermitidos += numerosChars;
+    if (this.incluirSimbolos) caracteresPermitidos += simbolosChars;
 
-    if (allowedChars === '') {
-      this.generatedPassword = '';
-      this.showError = true;
+    if (caracteresPermitidos === '') {
+      this.contrasenaGenerada = '';
+      this.mostrarError = true;
       return;
     }
-    this.showError = false;
+    this.mostrarError = false;
 
-    let password = '';
-    for (let i = 0; i < this.length; i++) {
-      const randomIndex = Math.floor(Math.random() * allowedChars.length);
-      password += allowedChars[randomIndex];
+    let contrasena = '';
+    for (let i = 0; i < this.longitud; i++) {
+      const indiceAleatorio = Math.floor(Math.random() * caracteresPermitidos.length);
+      contrasena += caracteresPermitidos[indiceAleatorio];
     }
-    this.generatedPassword = password;
+    this.contrasenaGenerada = contrasena;
   }
 
-  copyToClipboard(): void {
-    if (this.generatedPassword) {
-      navigator.clipboard.writeText(this.generatedPassword).then(() => {
+  copiarAlPortapapeles(): void {
+    if (this.contrasenaGenerada) {
+      navigator.clipboard.writeText(this.contrasenaGenerada).then(() => {
         alert('Contraseña copiada al portapapeles');
       });
     }

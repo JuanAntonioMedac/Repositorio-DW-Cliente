@@ -38,8 +38,8 @@ export class Tareas {
   constructor() {
     this.cargarTareas();
   }
-  eliminarTarea(index: number): void {
-    this.tareas.splice(index, 1);
+  eliminarTarea(indice: number): void {
+    this.tareas.splice(indice, 1);
     this.guardarTareas();
   }
 
