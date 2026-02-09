@@ -35,7 +35,7 @@ export class Tareas {
       this.tareas = JSON.parse(tareasGuardadas);
     }
   }
-  constructor() {
+  ngOnInit() {
     this.cargarTareas();
   }
   eliminarTarea(indice: number): void {
